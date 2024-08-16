@@ -1,16 +1,11 @@
-//He realizado de la siguiente manera los ejercicios, para dar fé de que
-//puedo trabajar con referencias.
-//Trabajar con reerencias es de las mejores opciones en el momento de 
+//Trabajar con referencias es de las mejores opciones en el momento de 
 //manipular grandes volúmenes de datos.
-//Considero que habrá veces que no existirán librerías que realicen
-//alguna tarea que se requiera, es entonces que nosotros debemos desarrollar
-//nuestras propias herramientas.
-//Agradezco mucho la oportunidad de que dieron de participar para vacante.
-//GRACIAS.
 
 import java.lang.Math;
 
 public class Main {
+
+    public static int counter;
 
     public static void main(String[] args) {
         
@@ -18,7 +13,7 @@ public class Main {
         //El método creaLista enlaza consecutivamente n elementos
         //utilizando la referencia next.
         //creaLista recibe como parámetro un objeto de tipo ListNode.
-        ListNode listNode = creaLista(10);
+        ListNode listNode = creaLista(3);
 
         //El método getLista retorna hasta 30 elementos de la lista.
         //Recibe como parámetro un objeto de tipo ListNode.
@@ -27,7 +22,7 @@ public class Main {
         //El método invertListNode retorna un objeto de tipo ListNode.
         //Recibe como parámetro el objeto listNode head que se requiere
         //invertir.
-        listNode=invertListNode(listNode);
+        listNode=invertListNode1(listNode);
         System.out.println("LISTA INVERTIDA: "+getLista(listNode));
 
         //El método toString en la clase ListNode retorna los valores
@@ -63,7 +58,7 @@ public class Main {
         previousElement=firstElement;
         
         for(int x=0;x<elements-1;++x){
-            ListNode currentElement=new ListNode((int)(Math.random()*100));;
+            ListNode currentElement=new ListNode((int)(Math.random()*100));
             previousElement.next=currentElement;
             previousElement=currentElement;
         }
@@ -82,6 +77,24 @@ public class Main {
         }
 
         return list;
+    }
+
+    public static ListNode invertListNode1(ListNode oldFirstListNode){
+        ListNode newFirstListNode;
+        ListNode bufferListNode;
+
+        bufferListNode=null;
+
+        for(;oldFirstListNode.next!=null;){
+            newFirstListNode=oldFirstListNode;
+            oldFirstListNode=oldFirstListNode.next;
+            newFirstListNode.next=bufferListNode;
+            bufferListNode=newFirstListNode;
+        }
+
+        oldFirstListNode.next=bufferListNode;
+        
+        return oldFirstListNode;
     }
 
     public static ListNode invertListNode(ListNode oldFirstListNode){
@@ -234,3 +247,4 @@ public class Main {
     }
 
 }
+//GRACIAS.
